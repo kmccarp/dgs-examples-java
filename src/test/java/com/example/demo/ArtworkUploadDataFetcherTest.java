@@ -25,10 +25,9 @@ class ArtworkUploadDataFetcherTest {
     void addArtwork() {
         int showId = new Random().nextInt();
 
-        Map<String, Object> map = new HashMap<String, Object>() {{
-            put("showId", showId);
-            put("upload", new MockMultipartFile("test", "test.file", "text/plain", "test".getBytes()));
-        }};
+        Map<String, Object> map = new HashMap<>();
+        map.put("showId", showId);
+        map.put("upload", new MockMultipartFile("test", "test.file", "text/plain", "test".getBytes()));
 
         String mutation = "mutation addArtwork($showId:Int!, $upload:Upload!) { addArtwork(showId:$showId, upload:$upload) {url} }";
 
@@ -36,7 +35,7 @@ class ArtworkUploadDataFetcherTest {
                 mutation,
                 "data.addArtwork",
                 map,
-                new TypeRef<List<Image>>() {
+                new TypeRef<>() {
                 }
         );
 
