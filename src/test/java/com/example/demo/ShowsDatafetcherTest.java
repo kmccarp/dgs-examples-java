@@ -98,7 +98,7 @@ class ShowsDatafetcherTest {
         List<Show> shows = dgsQueryExecutor.executeAndExtractJsonPathAsObject(
                 graphQLQueryRequest.serialize(),
                 "data.shows[*]",
-                new TypeRef<List<Show>>() {
+                new TypeRef<>() {
                 });
 
         assertThat(shows.size()).isEqualTo(1);
